@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: node-app
+    image: yassine/mon-app:latest
+    networks: 
+      - mon-network
+    depends_on: 
+      - mongo
+    ports:
+      - "8000:3000"        # ton app sera accessible sur localhost:8000
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo-db
+    networks: 
+      - mon-network
+    volumes:
+      - mongo-data:/data/db   # persist data MongoDB
+
+networks:
+  mon-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
