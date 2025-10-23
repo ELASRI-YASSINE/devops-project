@@ -1,6 +1,5 @@
 const express = require('express');
-// test CI/CD pipline
-// wuth githubactionsxy
+// test CI/CD pipline with githubactions
 const app = express();
 const Port = 3000;
 app.get('/', (req, res)=>{
